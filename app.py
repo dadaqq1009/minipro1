@@ -5,8 +5,8 @@ from pymongo import MongoClient
 client = MongoClient('mongodb+srv://dadaqq1009:z10091214@cluster0.ooefn7z.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
-@app.route('/')
-def home():
+@app.route('/name')
+def lee():
    return render_template('name.html')
 
 @app.route("/name", methods=["POST"])
@@ -21,6 +21,19 @@ def web_board_post():
     db.member_4.insert_one(doc)
 
     return jsonify({'msg': '기록 완료!'})
+
+@app.route('/board')
+def board():
+    return render_template('board.html')
+
+@app.route("/boards", methods=["GET"])
+def web_board_get():
+    guest_list4 = list(db.member_4.find({}, {'_id': False}))
+
+    return jsonify({'guests4':guest_list4})
+
+
+
 
 
 
