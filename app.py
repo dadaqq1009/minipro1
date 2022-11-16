@@ -18,9 +18,14 @@ def web_board_post():
         'name': name_receive,
         'message': message_receive
     }
-    db.board.insert_one(doc)
+    db.member_4.insert_one(doc)
 
     return jsonify({'msg': '기록 완료!'})
+
+
+
+
+
 
 
 
