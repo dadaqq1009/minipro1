@@ -5,9 +5,10 @@ from pymongo import MongoClient
 client = MongoClient('mongodb+srv://dadaqq1009:z10091214@cluster0.ooefn7z.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
-@app.route('/')
-def home():
-   return render_template('board.html')
+@app.route('/board')
+def board():
+    return render_template('board.html')
+
 
 # @app.route("/board", methods=["GET"])
  #def web_board_get():
@@ -28,7 +29,7 @@ def home():
     #return jsonify({'guests3':guest_list3})
 
 
-@app.route("/board", methods=["GET"])
+@app.route("/boards", methods=["GET"])
 def web_board_get():
     guest_list4 = list(db.member_4.find({}, {'_id': False}))
 
